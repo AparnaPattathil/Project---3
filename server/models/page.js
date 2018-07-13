@@ -8,7 +8,7 @@ const pageSchema = new Schema({
   },
  date: {type: Date, required: true},
  text: {type: String},
-_albums: {type: Schema.Types.ObjectId, ref: "Album"}
+_albums: [{type: Schema.Types.ObjectId, ref: "Albums"}]
 
   
 });

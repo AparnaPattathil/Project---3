@@ -30,22 +30,19 @@ router.post('/', passport.authenticate("jwt", config.jwtSession), (req, res, nex
     .catch(err => next(err))
 });
 
-//Router to get all pages of an album
+//Router to get all details of an album
 router.get('/:albumId',passport.authenticate("jwt", config.jwtSession), (req, res, next)=>{
     // TODO: find on Album instead of Page, and populate on _pages
     let albumId = req.params.albumId;
     console.log('albumId debug',albumId)
-         Album.findById(albumId)
+    Album.findById(albumId)
         .populate('_pages')
         .then(album =>{
-        console.log("info of page",album._pages[0])
-        res.json(album);
-    })
+            console.log("info of page",album)
+            res.json(album);
+        })
     .catch(error => next(error))
 });
-
-
-
 
 
 //Router to create new page
@@ -58,7 +55,7 @@ router.post('/:albumId/pages', passport.authenticate("jwt", config.jwtSession), 
     });
     Album.findByIdAndUpdate(albumId, { $push: { _pages: newPage._id } })
     .then(_ => {
-        newPage.save()
+        newPage.save(_albums )
         .then(newPage =>{
             res.json({
                 message: 'New page created!',
@@ -69,5 +66,33 @@ router.post('/:albumId/pages', passport.authenticate("jwt", config.jwtSession), 
     })
 });
 
+//Router to edit album
+router.put('/:albumId',passport.authenticate("jwt", config.jwtSession), (req, res, next)=>{
+    // let title = req.body.title;
+     // console.log('debug', req.body.title)
+     let albumId = req.params.albumId;
+     let album = req.body;
+     // console.log(album);
+     
+     Album.findByIdAndUpdate(albumId, album)
+     // .populate('_pages')
+     .then(data =>{
+         // console.log(data)
+         res.json(data);
+     })
+     .catch(error => next(error))
+ });
+
+ //Router to edit pages of an album
+ router.put('/:albumId/:pageId', passport.authenticate("jwt", config.jwtSession), (req, res, next)=>{
+    let pageId = req.params.pageId;
+    let { title, text, date } = req.body
+    Page.findByIdAndUpdate(pageId, {title, text, date}).then(
+        data=>{ 
+            console.log(data)
+            res.json(data)
+        }
+    ).catch(error=> next(error))
+});
 
 module.exports = router;
