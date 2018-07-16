@@ -55,7 +55,7 @@ router.post('/:albumId/pages', passport.authenticate("jwt", config.jwtSession), 
     });
     Album.findByIdAndUpdate(albumId, { $push: { _pages: newPage._id } })
     .then(_ => {
-        newPage.save(_albums )
+        newPage.save( )
         .then(newPage =>{
             res.json({
                 message: 'New page created!',
