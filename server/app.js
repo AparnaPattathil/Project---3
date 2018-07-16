@@ -12,7 +12,7 @@ const { Strategy, ExtractJwt } = require("passport-jwt");
 const config = require("./configs/index");
 var User = require('./models/user');
 var authRoutes = require('./routes/auth');
-var countriesRoutes = require('./routes/countries');
+// var countriesRoutes = require('./routes/countries');
 var albumsRoutes = require('./routes/albums');
 var usersRoutes = require('./routes/users');
 
@@ -63,7 +63,7 @@ passport.use(strategy);
 
 // List all your API routes
 app.use('/api', authRoutes);
-app.use('/api/countries', countriesRoutes);
+// app.use('/api/countries', countriesRoutes);
 app.use('/api/albums', albumsRoutes);
 app.use('/api/users', usersRoutes);
 

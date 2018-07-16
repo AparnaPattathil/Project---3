@@ -12,16 +12,23 @@ const errHandler = err => {
 export default {
   service: service,
   
-  getCountries() {
+  getAlbums() {
     return service
-      .get('/countries')
+      .get('/albums')
       .then(res => res.data)
       .catch(errHandler);
   },
 
-  postCountries(data) {
+  postAlbum(data) {
     return service
-      .post('/countries', data)
+      .post('/albums', data)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  postPage(data) {
+    return service
+      .post('/albums/:albumId/pages', data)
       .then(res => res.data)
       .catch(errHandler);
   },

@@ -8,7 +8,7 @@ var router = express.Router();
 
 // Route to get all albums
 router.get('/', (req, res, next) => {
-    Album.find()
+    Album.find().sort({"_id": -1})
     .then(albums => {
         res.json(albums);
     })
