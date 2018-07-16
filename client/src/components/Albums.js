@@ -72,15 +72,12 @@ class Albums extends Component {
           </Card>
         </Collapse>
 
-            {/* <Button color='primary' tag='a' href='/add-album'>
-            <FontAwesomeIcon icon="faPlus" />New album
-            </Button> */}
-
+           
           {this.state.albums.map((c, i) => 
             <Jumbotron key={i} >
-            <a className="display-4" tag='a' href={'/albums/' + c._id}>{c.title}</a>
+            <a className="display-4" tag='a' href={'/' + c._id}>{c.title}</a>
             <hr className="my-2" />
-            <Button color='primary' tag='a' href='/albums/:albumId'>List all pages</Button>
+            <Button color='primary' tag='a' href='/:albumId'>List all pages</Button>
             <br/><br/>
             <Button color='primary' tag='a' href=''>New page</Button>
             <Button color='primary' tag='a' href='/albums/:albumId'>Settings</Button>

@@ -19,6 +19,13 @@ export default {
       .catch(errHandler);
   },
 
+  getAlbum(albumId) {
+    return service
+      .get('/albums/'+albumId)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
   postAlbum(data) {
     return service
       .post('/albums', data)

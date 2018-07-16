@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
 import Home from './Home';
 import Albums from './Albums';
-import AddAlbum from './AddAlbum';
+import AlbumDetail from './AlbumDetail';
 import Secret from './Secret';
 import Login from './Login';
 import Signup from './Signup';
@@ -43,7 +43,7 @@ class App extends Component {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/albums" component={Albums} />
-         
+          <Route path='/:albumId' component={AlbumDetail} />
           <Route path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/secret" component={Secret} />
