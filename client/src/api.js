@@ -62,6 +62,7 @@ export default {
   },
   
   signup(userInfo) {
+    console.log("yolooo")
     return service
       .post('/signup', userInfo)
       .then(res => res.data)

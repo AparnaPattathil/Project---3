@@ -42,11 +42,11 @@ class App extends Component {
         </header>
         <Switch>
           <Route path="/" exact component={Home} />
-          <Route path="/albums" component={Albums} />
-          <Route path='/:albumId' component={AlbumDetail} />
-          <Route path="/signup" component={Signup} />
+          <Route exact path="/albums"  component={Albums} />
+          <Route exact path="/signup" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/secret" component={Secret} />
+          <Route path='/:albumId' component={AlbumDetail} />
           <Route render={() => <h2>404</h2>} />
         </Switch>        
       </div>

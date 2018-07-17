@@ -79,7 +79,7 @@ class AlbumDetail extends Component {
   }
   render() {
     if (!this.state.album)
-      return "Loading"
+      return "loading............///////////////////////////////////////////"
     console.log('props',this.props)
     let title=this.props.title;               
     return (
