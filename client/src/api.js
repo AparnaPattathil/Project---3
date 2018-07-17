@@ -46,6 +46,13 @@ export default {
       .then(res => res.data)
       .catch(errHandler);
   },
+
+  deletePage(albumId, pageId, data) {
+    return service
+      .delete(`/albums/${albumId}/${pageId}`, data)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
   
   getSecret() {
     return service

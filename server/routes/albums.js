@@ -95,4 +95,30 @@ router.put('/:albumId',passport.authenticate("jwt", config.jwtSession), (req, re
     ).catch(error=> next(error))
 });
 
+//Router to delete pages of an album
+router.delete('/:albumId/:pageId', passport.authenticate("jwt", config.jwtSession), (req, res, next)=>{
+    let pageId = req.params.pageId;
+    let albumId = req.params.albumId;
+    //let { title, text, date } = req.body
+    Page.findByIdAndRemove(pageId)
+    .then(page=>{ 
+        return Album.findById(albumId)
+            console.log(page)
+    })
+    .then(album =>{
+        album._pages = album._pages.filter(e => e.toString() !== pageId)
+        return album.save()
+    })
+    .then(() =>{
+        res.json({
+            success: true
+        });
+    })
+
+    .catch(error=> next(error))
+});
+
+
+
+
 module.exports = router;

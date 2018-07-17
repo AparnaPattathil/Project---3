@@ -32,6 +32,15 @@ class AlbumDetail extends Component {
     .catch(err => console.log(err))
   }
   
+  // handleDelete(id) {
+  //   api.deletePage(id)
+  //   .then(data => console.log(data))
+
+  //   this.setState({
+  //     _pages: this.state.page.filter(todo => todo._id !== id)
+  //   })
+  // }
+
   handleInputChange(pageField, i, event) {
     console.log(pageField, i, event);
 
@@ -106,7 +115,7 @@ class AlbumDetail extends Component {
               Date :{page.date}
               <hr/>
               Text: <Input type="textarea" name="text" value={ page.text} id="example" onChange={(e) => {this.handleInputChange("text", i, e)}} />
-     
+              <Button onClick = {this.props.onDelete} >Delete</Button>
            </Jumbotron>
           ).slice().reverse()}
          </Collapse>

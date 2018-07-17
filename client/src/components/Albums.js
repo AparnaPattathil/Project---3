@@ -71,7 +71,7 @@ class Albums extends Component {
             <a className="display-4" tag='a' href={'/' + c._id}>{c.title}</a>
             <hr className="my-2" />
             <br/><br/>
-            <Button color='primary' tag='a' href={'/' + c._id +'/pages'} >New page</Button>
+          
             <Button color='primary' tag='a' href='/albums/:albumId'>Settings</Button>
 
             </Jumbotron>
