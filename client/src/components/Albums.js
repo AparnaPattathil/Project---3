@@ -30,14 +30,7 @@ class Albums extends Component {
                  message: `Your new album '${this.state.title}' has been created`,
                  albums: [ result.album, ...this.state.albums]
             })
-      //       setTimeout(() => {
-      //         this.setState({
-      //           message: null
-      //         })
-      //       }, 2000)
-      //     })
-      //     .catch(err => {
-      //       console.log('ERROR')
+    
           })
       }
     componentDidMount() {
@@ -66,7 +59,7 @@ class Albums extends Component {
              <form>
            <input type="text" placeholder='title' name='title' value={this.state.newAlbum.title} onChange={(e) => {this.handleInputChange(e)}} /> <br/>
         
-          <button onClick={(e) => this.handleClick(e)}>Create album</button>
+          <Button onClick={(e) => this.handleClick(e)}>Create album</Button>
         </form>
             </CardBody>
           </Card>
@@ -77,9 +70,8 @@ class Albums extends Component {
             <Jumbotron key={i} >
             <a className="display-4" tag='a' href={'/' + c._id}>{c.title}</a>
             <hr className="my-2" />
-            <Button color='primary' tag='a' href='/:albumId'>List all pages</Button>
             <br/><br/>
-            <Button color='primary' tag='a' href=''>New page</Button>
+            <Button color='primary' tag='a' href={'/' + c._id +'/pages'} >New page</Button>
             <Button color='primary' tag='a' href='/albums/:albumId'>Settings</Button>
 
             </Jumbotron>

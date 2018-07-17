@@ -33,9 +33,16 @@ export default {
       .catch(errHandler);
   },
 
-  postPage(data) {
+  postPage(albumId, data) {
     return service
-      .post('/albums/:albumId/pages', data)
+      .post(`/albums/${albumId}/pages`, data)
+      .then(res => res.data)
+      .catch(errHandler);
+  },
+
+  savePage(albumId, pageId, data) {
+    return service
+      .put(`/albums/${albumId}/${pageId}`, data)
       .then(res => res.data)
       .catch(errHandler);
   },

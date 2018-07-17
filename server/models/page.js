@@ -4,10 +4,10 @@ const {Schema} = mongoose;
 const pageSchema = new Schema({  
   title: {
     type: String,
-    required:true
+    default: ""
   },
- date: {type: Date, required: true},
- text: {type: String},
+ date: {type: Date, default: Date.now()},
+ text: {type: String, default: ""},
 });
 
 const Page = mongoose.model('Page', pageSchema);
