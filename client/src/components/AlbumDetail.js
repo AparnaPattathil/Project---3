@@ -32,14 +32,20 @@ class AlbumDetail extends Component {
     .catch(err => console.log(err))
   }
   
-  // handleDelete(id) {
-  //   api.deletePage(id)
-  //   .then(data => console.log(data))
-
-  //   this.setState({
-  //     _pages: this.state.page.filter(todo => todo._id !== id)
-  //   })
-  // }
+  handleDelete(albumId,pageId) {
+    console.log(albumId,pageId);
+    
+    api.deletePage(albumId,pageId)
+    .then(data =>
+       console.log(data))
+       this.setState({
+        album: {
+          ...this.state.album,
+          _pages: this.state.album._pages.filter(page =>page._id !== pageId)
+        }
+      })
+   
+  }
 
   handleInputChange(pageField, i, event) {
     console.log(pageField, i, event);
@@ -78,8 +84,12 @@ class AlbumDetail extends Component {
     this.getCurrentAlbumFromAPI()
   }
   render() {
+    // let pageId = this.state.album._pages._id
+   let albumId = this.props.match.params.albumId;
+    console.log("pageid", this.state);
+    
     if (!this.state.album)
-      return "loading............///////////////////////////////////////////"
+      return "Loading..."
     console.log('props',this.props)
     let title=this.props.title;               
     return (
@@ -115,7 +125,7 @@ class AlbumDetail extends Component {
               Date :{page.date}
               <hr/>
               Text: <Input type="textarea" name="text" value={ page.text} id="example" onChange={(e) => {this.handleInputChange("text", i, e)}} />
-              <Button onClick = {this.props.onDelete} >Delete</Button>
+              <Button onClick={(e) => {this.handleDelete(albumId, page._id, e)}} >Delete</Button>
            </Jumbotron>
           ).slice().reverse()}
          </Collapse>

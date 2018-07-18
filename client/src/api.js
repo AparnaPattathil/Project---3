@@ -47,9 +47,9 @@ export default {
       .catch(errHandler);
   },
 
-  deletePage(albumId, pageId, data) {
+  deletePage(albumId, pageId) {
     return service
-      .delete(`/albums/${albumId}/${pageId}`, data)
+      .delete(`/albums/${albumId}/${pageId}`)
       .then(res => res.data)
       .catch(errHandler);
   },
