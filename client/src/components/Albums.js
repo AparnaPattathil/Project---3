@@ -78,7 +78,7 @@ class Albums extends Component {
                       
             <Col sm='4' key={i} className="mb-4 p-2">
             {/* <CardImg src="../logo.svg" /> */}
-            <a className="display-4 card p-4"  href={'/' + c._id}>{c.title}</a>
+            <a className="display-4 card p-6"  href={'/' + c._id}>{c.title}</a>
             {/* <hr className="my-2" /> */}
 {/*           
             <Button color='primary' tag='a' href='/albums/:albumId'>Settings</Button> */}
