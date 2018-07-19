@@ -12,9 +12,8 @@ class Home extends Component {
     return (
       <div className="Home">
         <h1>millithink</h1>
-        <Button outline color="primary" tag="a" href="/login">
-           Scribble down your milli thoughts
-        </Button>
+          <h3> Scribble down your milli thoughts</h3>
+    
        
       </div>
     );

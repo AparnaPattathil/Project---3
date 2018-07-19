@@ -10,11 +10,25 @@ import api from '../api';
 import logo from '../logo.svg';
 import './App.css';
 
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap';
+
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons'
 
 library.add(faStroopwafel)
+
 
 class App extends Component {
   constructor(props) {
@@ -29,17 +43,40 @@ class App extends Component {
     api.logout()
   }
 
-  render() {                
+  render() { 
+    
+                                 
     return (
       <div className="App">
-        <header className="App-header">
-          <Link to="/">Home</Link> 
-          <Link to="/albums">Albums</Link> 
-          {!api.isLoggedIn() && <Link to="/signup">Signup</Link> }
-          {!api.isLoggedIn() && <Link to="/login">Login</Link> }
-          {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link> }
-          <Link to="/secret">Secret</Link> 
-        </header>
+
+<div>
+  <Navbar color="dark" dark expand="md">
+          <NavbarBrand href="/">millithink</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/">Home</NavLink>
+              </NavItem>
+              <NavItem>
+              {api.isLoggedIn() && <NavLink href="/albums">Albums</NavLink> }
+              </NavItem>
+              <NavItem>
+              {!api.isLoggedIn() && <NavLink href="/signup">Signup</NavLink> }
+              </NavItem>
+              <NavItem>
+              {!api.isLoggedIn() && <NavLink href="/login">Login</NavLink> }
+              </NavItem>
+             
+              <NavItem>
+              {api.isLoggedIn() && <NavLink href="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</NavLink> }
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+</div>
+
+       
         <Switch>
           <Route path="/" exact component={Home} />
           <Route exact path="/albums"  component={Albums} />

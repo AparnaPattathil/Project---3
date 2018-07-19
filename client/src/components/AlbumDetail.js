@@ -2,7 +2,7 @@
 
 
 import React, { Component } from 'react';
-import {Container, Jumbotron,Button,Col, Form, FormGroup, Label, Input, Collapse, Card, CardBody, FormText} from 'reactstrap';
+import {Container, Jumbotron,Button,Col, Form, FormGroup, Label, Input, Collapse, Card, CardBody, FormText, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 //import { Route, Switch, NavLink, Link } from 'react-router-dom';
 import api from '../api';
 // import './Sample.css';
@@ -95,8 +95,9 @@ class AlbumDetail extends Component {
     return (
       <div className="AlbumDetail">
         <Container>
-          {this.props.match.params.albumId} <br/>
+         
          <h1> {this.state.album.title} </h1> <br/>
+       
           <div className='new-page'>
           <Button color="primary" onClick={this.handleAddPage.bind(this)} style={{ marginBottom: '1rem' }}>New page</Button>
           <Collapse isOpen={this.state.collapseNewPage}>
@@ -118,7 +119,7 @@ class AlbumDetail extends Component {
 
          <Collapse isOpen={this.state.collapseAllPage}>
           {this.state.album._pages.map((page, i) =>
-            <Jumbotron>
+            <Jumbotron key={i}>
              Title: 
              <Input type="textarea" name="title" value={ page.title} id="exampleText" onChange={(e) => {this.handleInputChange("title", i, e)}} />
              <br/>

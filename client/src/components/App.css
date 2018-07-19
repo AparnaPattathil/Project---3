@@ -1,7 +1,13 @@
 .App {
   text-align: center;
 }
-
+body{
+  color : white;
+  
+   background-image:  url('../writing.jpg');
+   background-size: 100%;
+   background-repeat: no-repeat;
+} 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -13,6 +19,7 @@
   padding: 20px;
   color: white;
 }
+
 
 .App-header a {
   color: white;

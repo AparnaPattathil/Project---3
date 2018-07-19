@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import api from '../api';
 import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {Button, Jumbotron,Collapse,CardBody, Card} from 'reactstrap';
+
+import {Button, Jumbotron,Collapse,CardBody, Card, Form, FormGroup, CardImg, CardText, 
+  CardTitle, CardSubtitle,Container, Row, Col, Modal} from 'reactstrap';
 
 class Albums extends Component {
     constructor(props) {
       super(props);
       this.toggle = this.toggle.bind(this);
-      this.state = { collapse: false,   albums: [], newAlbum:{title:""} };
+      this.state = { modal: false,  
+          albums: [],
+          newAlbum:{title:""} };
     }
     toggle() {
-        this.setState({ collapse: !this.state.collapse });
+        this.setState({ modal: !this.state.modal });
       }
     handleInputChange(event) {
         let newAlbum = this.state.newAlbum;
@@ -52,31 +56,41 @@ class Albums extends Component {
             
           <h2>Your albums</h2>
           <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>New album</Button>
-          <Collapse isOpen={this.state.collapse}>
+          <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <Card>
             <CardBody>
-                
-             <form>
-           <input type="text" placeholder='title' name='title' value={this.state.newAlbum.title} onChange={(e) => {this.handleInputChange(e)}} /> <br/>
+            
+             <Form>
+               <FormGroup>
+           <input type="text" placeholder='title' name='title' value={this.state.newAlbum.title} onChange={(e) => {this.handleInputChange(e)}} /> 
+           </FormGroup>
+           <br/>
         
           <Button onClick={(e) => this.handleClick(e)}>Create album</Button>
-        </form>
+        </Form>
             </CardBody>
           </Card>
-        </Collapse>
+        </Modal>
 
-           
+           <Container>
+               <Row>
+               
           {this.state.albums.map((c, i) => 
-            <Jumbotron key={i} >
-            <a className="display-4" tag='a' href={'/' + c._id}>{c.title}</a>
+                      
+            <Col sm='6' key={i}>
+            <a className="display-4"  href={'/' + c._id}>{c.title}</a>
             <hr className="my-2" />
             <br/><br/>
-          
-            <Button color='primary' tag='a' href='/albums/:albumId'>Settings</Button>
+{/*           
+            <Button color='primary' tag='a' href='/albums/:albumId'>Settings</Button> */}
 
-            </Jumbotron>
-            )}
+            </Col>
           
+          
+          )}
+          
+          </Row>
+            </Container>
         </div>
       );
     }
