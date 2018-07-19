@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import api from '../api';
 
+import {Form, FormGroup, Label, Input, Container, Jumbotron, Button} from 'reactstrap';
+
 class Signup extends Component {
   constructor(props) {
     super(props)
@@ -8,6 +10,7 @@ class Signup extends Component {
       email: "",
       name: "",
       password: "",
+     
     }
   }
 
@@ -18,6 +21,7 @@ class Signup extends Component {
     this.setState(newState)
   }
 
+ 
   handleClick(e) {
     e.preventDefault()
     let data = {
@@ -38,13 +42,28 @@ class Signup extends Component {
   render() {   
     return (
       <div className="Signup">
-        <h2>Signup</h2>
-        <form>
-          Email: <input type="text" value={this.state.email} onChange={(e) => {this.handleInputChange("email", e)}} /> <br/>
-          Name: <input type="text" value={this.state.name} onChange={(e) => {this.handleInputChange("name", e)}} /> <br/>
-          Password: <input type="password" value={this.state.password} onChange={(e) => {this.handleInputChange("password", e)}}  /> <br/>
-          <button onClick={(e) => this.handleClick(e)}>Signup</button>
-        </form>
+      <Container>
+        <Jumbotron>   
+        <h1>Signup</h1>
+        <Form>
+        <FormGroup>
+          <Label for="exampleEmail">Email</Label>
+          <Input type="email" name="email" id="exampleEmail" placeholder="example@example.com" value={this.state.email} onChange={(e) => {this.handleInputChange("email", e)}}/>
+        </FormGroup>
+        <FormGroup>
+        <Label for="name">Name</Label>
+          <Input type="password" name="password" id="name" placeholder="name" value={this.state.name} onChange={(e) => {this.handleInputChange("name", e)}} />
+        </FormGroup>
+        <FormGroup>
+        <Label for="examplePassword">Password</Label>
+          
+          <Input type="password" name="password" id="examplePassword" placeholder="password" value={this.state.name} onChange={(e) => {this.handleInputChange("name", e)}}  />
+        </FormGroup>
+          <br/>
+          <Button color='danger' onClick={(e) => this.handleClick(e)}>Signup</Button>
+        </Form>
+        </Jumbotron>
+        </Container>
       </div>
     );
   }

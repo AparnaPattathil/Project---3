@@ -4,20 +4,31 @@ body {
   font-family: sans-serif;
  
 }
-a {
+.Albums h1{
+  padding: 3%
+}
+.Albums a {
   color:royalblue;
 }
 a:hover {
   text-decoration: none;
 }
 h1{
-  color: rgb(109, 41, 41);
+  color: #e7ffb3;
   font-size: 6em;
 }
 
-.Home {
+.Home, .Signup, .Login, .Albums, .AlbumDetail {
   background-image:  url('./writing.jpg');
   background-size: 100%;
   background-repeat: no-repeat;
   min-height: 100vh;
+}
+.Signup, .Login{
+  padding: 5%;
+  color:  #5c415d;
+}
+
+.Albums .Albums{
+  padding: 3%;
 }

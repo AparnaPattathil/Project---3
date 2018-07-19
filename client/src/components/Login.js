@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../api';
+import {Form, FormGroup, Label, Input, Container, Jumbotron, Button} from 'reactstrap';
 
 class Login extends Component {
   constructor(props) {
@@ -32,12 +33,25 @@ class Login extends Component {
   render() {   
     return (
       <div className="Login">
-        <h2>Login</h2>
-        <form>
-          Email: <input type="text" value={this.state.email} onChange={(e) => {this.handleInputChange("email", e)}} /> <br/>
-          Password: <input type="password" value={this.state.password} onChange={(e) => {this.handleInputChange("password", e)}}  /> <br/>
-          <button onClick={(e) => this.handleClick(e)}>Login</button>
-        </form>
+      <Container>
+        <Jumbotron>   
+        <h1>Login</h1>
+        <Form>
+        <FormGroup>
+          <Label for="exampleEmail">Email</Label>
+          <Input type="email" name="email" id="exampleEmail" placeholder="example@example.com" value={this.state.email} onChange={(e) => {this.handleInputChange("email", e)}}/>
+        </FormGroup>
+       
+        <FormGroup>
+        <Label for="examplePassword">Password</Label>
+          <Input type="password" name="password" id="examplePassword" placeholder="password" value={this.state.password} onChange={(e) => {this.handleInputChange("password", e)}}  />
+        </FormGroup>
+          <br/>
+          <Button color='danger' onClick={(e) => this.handleClick(e)}>Login</Button>
+        </Form>
+        </Jumbotron>
+        </Container>
+        
       </div>
     );
   }

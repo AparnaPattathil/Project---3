@@ -54,8 +54,8 @@ class Albums extends Component {
       return (
         <div className="Albums">
             
-          <h2>Your albums</h2>
-          <Button color="danger" onClick={this.toggle} style={{ marginBottom: '1rem' }}>New album</Button>
+          <h1>Your albums</h1>
+          <Button color="danger" onClick={this.toggle} style={{ marginBottom: '1rem', padding: '5px 2%' }}>New album</Button>
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
           <ModalHeader toggle={this.toggle}>Create new album</ModalHeader>
           

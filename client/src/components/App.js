@@ -18,6 +18,10 @@ import {
   Nav,
   NavItem,
   NavLink,
+  Modal, 
+  ModalHeader,
+  ModalBody,
+  ModalFooter
   } from 'reactstrap';
 
 import { library } from '@fortawesome/fontawesome-svg-core'
@@ -32,10 +36,11 @@ class App extends Component {
     super(props)
     this.state = {
       albums: []
+     
     }
     api.loadUser();
   }
-
+  
   handleLogoutClick(e) {
     api.logout()
   }
@@ -47,7 +52,7 @@ class App extends Component {
       <div className="App">
 
 <div>
-  <Navbar color="dark" dark expand="md">
+  <Navbar dark expand="md">
           <NavbarBrand href="/">millithink</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>

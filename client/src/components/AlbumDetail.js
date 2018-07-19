@@ -98,9 +98,9 @@ class AlbumDetail extends Component {
          
          <h1> {this.state.album.title} </h1> <br/>
        
-          <div className='new-page'>
-          <Button color="primary" onClick={this.handleAddPage.bind(this)} style={{ marginBottom: '1rem' }}>New page</Button>
-          <Collapse isOpen={this.state.collapseNewPage}>
+          {/* <div className='new-page'> */}
+          <Button color="danger" onClick={this.handleAddPage.bind(this)} style={{ marginBottom: '1rem' }}>New page</Button>
+          {/* <Collapse isOpen={this.state.collapseNewPage}>
           {/* <Card>
             <CardBody>
                 
@@ -109,24 +109,27 @@ class AlbumDetail extends Component {
         </form>
             </CardBody>
           </Card> */}
-        </Collapse>
+        {/* </Collapse>  */}
 
-          </div>
+          {/* </div> */}
 
           <div className="page-list">
 
-         <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>List all pages</Button>
+         <Button color="danger" onClick={this.toggle} style={{ marginBottom: '1rem' }}>List all pages</Button>
 
          <Collapse isOpen={this.state.collapseAllPage}>
           {this.state.album._pages.map((page, i) =>
             <Jumbotron key={i}>
-             Title: 
-             <Input type="textarea" name="title" value={ page.title} id="exampleText" onChange={(e) => {this.handleInputChange("title", i, e)}} />
-             <br/>
+              <Button color='danger'style={{float: 'right' }} onClick={(e) => {this.handleDelete(albumId, page._id, e)}} >X</Button>
+                          <br />
               Date :{page.date}
+             Title: 
+             <Input type="text" name="title" value={ page.title} id="exampleText" onChange={(e) => {this.handleInputChange("title", i, e)}} />
+             <br/>
+            
               <hr/>
               Text: <Input type="textarea" name="text" value={ page.text} id="example" onChange={(e) => {this.handleInputChange("text", i, e)}} />
-              <Button onClick={(e) => {this.handleDelete(albumId, page._id, e)}} >Delete</Button>
+              {/* <Button color='danger'onClick={(e) => {this.handleDelete(albumId, page._id, e)}} >X</Button> */}
            </Jumbotron>
           ).slice().reverse()}
          </Collapse>
