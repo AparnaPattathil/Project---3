@@ -2,11 +2,8 @@
   text-align: center;
 }
 body{
-  color : white;
+  color : green;
   
-   background-image:  url('../writing.jpg');
-   background-size: 100%;
-   background-repeat: no-repeat;
 } 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;

@@ -3,7 +3,7 @@ import api from '../api';
 import  { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {Button, Jumbotron,Collapse,CardBody, Card, Form, FormGroup, CardImg, CardText, 
-  CardTitle, CardSubtitle,Container, Row, Col, Modal} from 'reactstrap';
+  CardTitle, CardSubtitle,Container, Row, Col, Modal, ModalHeader, ModalBody,ModalFooter} from 'reactstrap';
 
 class Albums extends Component {
     constructor(props) {
@@ -55,21 +55,20 @@ class Albums extends Component {
         <div className="Albums">
             
           <h2>Your albums</h2>
-          <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>New album</Button>
+          <Button color="danger" onClick={this.toggle} style={{ marginBottom: '1rem' }}>New album</Button>
           <Modal isOpen={this.state.modal} toggle={this.toggle}>
-          <Card>
-            <CardBody>
+          <ModalHeader toggle={this.toggle}>Create new album</ModalHeader>
+          
             
-             <Form>
-               <FormGroup>
+            
+          <ModalBody>
            <input type="text" placeholder='title' name='title' value={this.state.newAlbum.title} onChange={(e) => {this.handleInputChange(e)}} /> 
-           </FormGroup>
+           </ModalBody>
            <br/>
-        
-          <Button onClick={(e) => this.handleClick(e)}>Create album</Button>
-        </Form>
-            </CardBody>
-          </Card>
+          <ModalFooter>
+          <Button color='danger' onClick={(e) => this.handleClick(e)}>Save</Button>
+       
+         </ModalFooter>
         </Modal>
 
            <Container>
@@ -77,10 +76,10 @@ class Albums extends Component {
                
           {this.state.albums.map((c, i) => 
                       
-            <Col sm='6' key={i}>
-            <a className="display-4"  href={'/' + c._id}>{c.title}</a>
-            <hr className="my-2" />
-            <br/><br/>
+            <Col sm='4' key={i} className="mb-4 p-2">
+            {/* <CardImg src="../logo.svg" /> */}
+            <a className="display-4 card p-4"  href={'/' + c._id}>{c.title}</a>
+            {/* <hr className="my-2" /> */}
 {/*           
             <Button color='primary' tag='a' href='/albums/:albumId'>Settings</Button> */}
 

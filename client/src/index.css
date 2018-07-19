@@ -4,7 +4,20 @@ body {
   font-family: sans-serif;
  
 }
+a {
+  color:royalblue;
+}
+a:hover {
+  text-decoration: none;
+}
 h1{
-  color: white;
+  color: rgb(109, 41, 41);
   font-size: 6em;
+}
+
+.Home {
+  background-image:  url('./writing.jpg');
+  background-size: 100%;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
