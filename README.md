@@ -1,8 +1,13 @@
-# MERN boilerplate | Ironhack Fullstack Application
+# millithink |  Fullstack Application built with MERN stack
 
 
-## Global information
+## What is millithink?
+```
+  An online platform to scribble down your thoughts and memories. You can create different albums for different different contexts and add pages to it. 
 
+  [github](https://millithink.herokuapp.com/)
+
+```
 ### Directory structure
 ```
 client/
